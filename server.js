@@ -1,5 +1,6 @@
 require("dotenv").config();
 const path = require("path");
+const cors = require("cors");
 const express = require("express");
 const multer = require("multer");
 const { connectDb } = require("./db/db.config");
@@ -27,6 +28,7 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use(cors({ origin: "*" }));
 
 // image upload
 const storage = multer.diskStorage({
