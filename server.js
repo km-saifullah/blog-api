@@ -21,6 +21,7 @@ const deleteAllCategory = require("./controller/deleteAllCategory");
 const showAllCategory = require("./controller/showAllCategory");
 const editBlogController = require("./controller/editBlogController");
 const deleteBlogController = require("./controller/deleteBlogController");
+const getBlog = require("./controller/getBlog");
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -59,6 +60,7 @@ app.post(
   createBlog
 );
 app.get("/getblogs", secureApi, getAllBlogs);
+app.get("/getblog/:id", secureApi, getBlog);
 app.post("/edit-blog", upload.single("avatar"), editBlogController);
 app.post("/delete-blog", deleteBlogController);
 
